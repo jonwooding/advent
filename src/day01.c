@@ -25,6 +25,8 @@ AdventError day01(void)
 
     unsigned int curr = 0;
     unsigned int max = 0;
+    unsigned int max2 = 0;
+    unsigned int max3 = 0;
 
     // getline returns -1 on eof
     while(bytes_read = getline(&line, &line_len, fd) > 0)
@@ -35,8 +37,25 @@ AdventError day01(void)
             if (curr > max)
             {
                 printf("Encountered new max!\n");
+                max3 = max2;
+                max2 = max;
                 max = curr; 
+                curr = 0;
             }
+
+            if (curr > max2)
+            {
+                max3 = max2;
+                max2 = curr;
+                curr = 0;
+            }
+
+            if (curr > max3)
+            {
+                max3 = curr;
+                curr = 0;
+            }
+
             curr = 0;
             continue;
         }
@@ -45,8 +64,14 @@ AdventError day01(void)
     }
 
     printf("Maximum calories found: %d\n", max); 
+    printf("Top 3: %d\n", max + max2 + max3); 
 
 cleanup:
+    if (NULL != line)
+    {
+        free(line);
+    }
+
     if (NULL != fd)
     {
         fclose(fd);

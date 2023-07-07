@@ -3,6 +3,8 @@
 
 ADVENT days[DAYS] = {
     day01,
+    day02,
+    day03,
 };
 
 int main(int argc, char *argv[])

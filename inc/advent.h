@@ -9,7 +9,9 @@ typedef enum
 } AdventError;
 
 // the define sets the size of the array and bounds of it 
-#define DAYS        1
+#define DAYS        3
 
 // one per
 AdventError day01(void);
+AdventError day02(void);
+AdventError day03(void);
